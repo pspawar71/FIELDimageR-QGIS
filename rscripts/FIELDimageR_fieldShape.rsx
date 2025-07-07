@@ -81,11 +81,22 @@ if (length(points_layer$geometry) == 4) {
     grid_shapefile <- st_sf(geometry,crs = st_crs(points_layer)) %>% mutate(ID = seq(1, length(geometry)))
   }
   print(grid_shapefile)
-  rect_around_point <- function(x, xsize, ysize) {
-    bbox <- st_bbox(x)
-    bbox <- bbox + c(xsize / 2, ysize / 2, -xsize / 2, -ysize / 2)
-    return(st_as_sfc(st_bbox(bbox)))
-  }
+ rect_around_point <- function(x, xsize, ysize) {
+  coords <- st_coordinates(x)
+  x_center <- coords[1]
+  y_center <- coords[2]
+  
+  rect <- matrix(c(
+    x_center - xsize / 2, y_center - ysize / 2,
+    x_center - xsize / 2, y_center + ysize / 2,
+    x_center + xsize / 2, y_center + ysize / 2,
+    x_center + xsize / 2, y_center - ysize / 2,
+    x_center - xsize / 2, y_center - ysize / 2
+  ), ncol = 2, byrow = TRUE)
+  
+  st_sfc(st_polygon(list(rect)), crs = st_crs(x))
+}
+
   
   if (!is.null(x_plot_size) && !is.null(y_plot_size)) {
   if (st_is_longlat(grid_shapefile)) {
@@ -104,9 +115,15 @@ if (length(points_layer$geometry) == 4) {
       grid <- st_as_sf(points)
       grid<-st_transform(grid, st_crs('EPSG:4326'))
       b<-st_transform(grid_shapefile, crs = 4326)
+      A <- parameters
+
+     # Polar decomposition to extract pure rotation matrix R
+     svdA <- svd(A)
+     R <- svdA$u %*% t(svdA$v)
+
       ga = st_geometry(grid)
       cga = st_centroid(ga)
-      grid_shapefile = (ga-cga) *parameters+cga
+      grid_shapefile = (ga-cga) *R+cga
       if(!is.null(mosaic_layer)){
       st_crs(grid_shapefile) <- st_crs(mosaic)
       grid_shapefile<-st_as_sf(grid_shapefile)
@@ -120,27 +137,33 @@ if (length(points_layer$geometry) == 4) {
      {
       cen <- suppressWarnings(st_centroid(grid_shapefile))
     
-      bbox_list <- lapply(st_geometry(cen), st_bbox)
-      points_list <- lapply(bbox_list, st_as_sfc)
+    points_list <- st_geometry(cen)
+
+    # Generate rectangles
+    rectangles <- lapply(points_list, function(pt) rect_around_point(pt, x_plot_size, y_plot_size))
     
-      rectangles <- lapply(points_list, function(pt) rect_around_point(pt, x_plot_size, y_plot_size))
+    grid <- st_as_sf(do.call(c, rectangles), crs = st_crs(cen))
     
-      points <- rectangles[[1]]
-      for (i in 2:length(rectangles)) {
-        points <- c(points, rectangles[[i]])
-      }
-      st_crs(points) <- st_crs(cen)
-      grid <- st_as_sf(points)
-      if(!is.null(mosaic_layer)){
+if (!is.null(mosaic_layer)) {
       st_crs(grid) <- st_crs(mosaic)
-      }
-      if(is.null(mosaic_layer)){
+    }
+    if (is.null(mosaic_layer)) {
       st_crs(grid) <- st_crs(points_layer)
-      }
-      b<-st_transform(grid_shapefile, crs = 4326)
+    }
+
+      # Original transformation matrix (from lm)
+     A <- parameters
+
+     # Polar decomposition to extract pure rotation matrix R
+     svdA <- svd(A)
+     R <- svdA$u %*% t(svdA$v)
+     if (det(R) < 0) {
+     svdA$v[, 2] <- -svdA$v[, 2]
+     R <- svdA$u %*% t(svdA$v)
+     }
       ga = st_geometry(grid)
       cga = st_centroid(ga)
-      grid_shapefile = (ga-cga) *parameters+cga
+      grid_shapefile = (ga-cga) *R+cga
       if(!is.null(mosaic_layer)){
       st_crs(grid_shapefile) <- st_crs(mosaic)
       grid_shapefile<-st_as_sf(grid_shapefile)
