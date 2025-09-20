@@ -337,7 +337,7 @@ Attention: The plots are identified in ascending order from left to right and bo
 | Anthocyanin Reflectance Index | ARI | (1/G)-(1/RE) | Anthocyanin content | Gitelson et al. (2001) |
 | Atmospherically Resistant Vegetation Index | ARVI | (NIR-(R-0.1*(R-B)))/(NIR+(R-0.1*(R-B))) | Atmospheric resistance | Kaufman & Tanre (1992) |
 | Blue-Wide Dynamic Range Vegetation Index | BWDRVI | (0.1*NIR-B)/(0.1*NIR+B) | Biophysical characteristics | Gitelson (2004) |
-| Canopy Chlorophyll Content Index | CCCI | ((NIR-R)/(NIR+R))/((NIR-R)/(NIR+R)) | Chlorophyll content, nitrogen status | Barnes et al. (2000) |
+| Canopy Chlorophyll Content Index | CCCI | ((NIR-RE)/(NIR+RE))/((NIR-R)/(NIR+R)) | Chlorophyll content, nitrogen status | Barnes et al. (2000) |
 | Chlorophyll index – green | CIG | (NIR/G)-1 | Chlorophyll | Gitelson et al. (2003) |
 | Chlorophyll index – red edge | CIRE | (NIR/RE)-1 | Chlorophyll | Gitelson et al. (2003) |
 | Chlorophyll vegetation index | CVI | (NIR*R)/(G^2) | Chlorophyll | Vincini et al. (2008) |
