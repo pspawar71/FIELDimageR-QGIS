@@ -99,7 +99,7 @@ Ind <- data.frame(
          "(NIR - (Red - 0.1*(Red-Blue))) / (NIR + (Red - 0.1*(Red-Blue)))",
          "1/((0.1 - Red)^2 + (0.06 - NIR)^2)",
          "(0.1*NIR-Blue)/(0.1*NIR+Blue)",
-         "((NIR-Red)/(NIR+Red))/((NIR-Red)/(NIR+Red))",
+         "((NIR-RE)/(NIR+RE))/((NIR-Red)/(NIR+Red))",
          "(NIR - (1.7 * (Blue-Red))) / (NIR + (1.7 * (Blue-Red)))",
          "NIR-Green",
          "(NIR-Green)/(NIR+Green+0.16)",
@@ -286,4 +286,5 @@ calculate_multiple_indices <- function(indices, user_input_sequence, stacked_fil
 
 # Call the function
 output_files <- calculate_multiple_indices(selected_indices, user_input_sequence, stacked_file)
+
 
