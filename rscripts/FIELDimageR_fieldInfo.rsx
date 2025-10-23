@@ -34,16 +34,11 @@ fun='max'
 plotInfo <- as.data.frame(exact_extract(mosaic, fieldShape, fun))
 colnames(plotInfo)<-paste0(names(mosaic),'_max')
 }else if(fun==4){
-fun=c('mean','sum','max','min','mode','stdev','variance','coefficient_of_variation','majority','minority')
-plotInfo <- exact_extract(mosaic, fieldShape, fun)
+fun=c('mean','sum','max','min','mode','stdev','variance','coefficient_of_variation','majority','minority','quantile')
+plotInfo <- exact_extract(mosaic, fieldShape, fun,quantiles = c(0.25, 0.5, 0.75, 0.9))
 }
 
-if ("ID" %in% colnames(plotInfo)) {
-  plotInfo <- plotInfo[, !colnames(plotInfo) %in% "ID", drop = FALSE]
-}
-# Combine fieldShape and plotInfo safely
-Out <- cbind(fieldShape, plotInfo)
-Out <- Out[, !colnames(Out) %in% "fid", drop = FALSE]
+Out<-cbind(fieldShape, plotInfo[,!colnames(plotInfo)%in%c("ID"),drop=FALSE])
 
 # Write the grid shapefile to disk
 output_shapefile_info <- Out
