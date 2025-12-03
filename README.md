@@ -326,7 +326,6 @@ Attention: The plots are identified in ascending order from left to right and bo
 | Soil Color Index | SCI | (R-G)/(R+G) | Soil color | Mathieu et al. (1998) |
 | Spectral Slope Saturation Index | SI | (R-B)/(R+B) | Soil color | Escadafal et al. (1994) |
 | Visible Atmospherically Resistant Index | VARI | (G-R)/(G+R-B) | Canopy, biomass, chlorophyll | Gitelson et al. (2002) |
-| Vegetation Index Green | VIG | (G-R)/(G+R) | Vegetation fraction | Gitelson et al. (2002) |
 
 <br />
 
