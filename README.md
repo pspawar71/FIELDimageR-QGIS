@@ -301,7 +301,6 @@ Attention: The plots are identified in ascending order from left to right and bo
 |-------------|-------|---------|----------------|------------|
 | Blue Green Pigment Index | BGI | B/G | Chlorophyll, LAI | Zarco-Tejada et al. (2005) |
 | Brightness Index | BI | sqrt((R^2+G^2+B^2)/3) | Vegetation coverage, water content | Richardson and Wiegand (1977) |
-| Burned Area Index | BAI | 1/((0.1-R)^2+(0.06-NIR)^2) | Burned areas | Martín (1998) |
 | Coloration Index | CI | ((R-B)/R) | Soil color | Escadafal & Huete (1991) |
 | Excess Green Vegetation Index | EGVI | 2*G-R-B | Weed identification | Woebbecke et al. (1995) |
 | Excess Red Vegetation Index | ERVI | ((1.4*R)-G) | Vegetation identification | Meyer & Neto (2008) |
@@ -335,6 +334,7 @@ Attention: The plots are identified in ascending order from left to right and bo
 |-------------|-------|---------|----------------|------------|
 | Anthocyanin Reflectance Index | ARI | (1/G)-(1/RE) | Anthocyanin content | Gitelson et al. (2001) |
 | Atmospherically Resistant Vegetation Index | ARVI | (NIR-(R-0.1*(R-B)))/(NIR+(R-0.1*(R-B))) | Atmospheric resistance | Kaufman & Tanre (1992) |
+| Burned Area Index | BAI | 1/((0.1-R)^2+(0.06-NIR)^2) | Burned areas | Martín (1998) |
 | Blue-Wide Dynamic Range Vegetation Index | BWDRVI | (0.1*NIR-B)/(0.1*NIR+B) | Biophysical characteristics | Gitelson (2004) |
 | Canopy Chlorophyll Content Index | CCCI | ((NIR-RE)/(NIR+RE))/((NIR-R)/(NIR+R)) | Chlorophyll content, nitrogen status | Barnes et al. (2000) |
 | Chlorophyll index – green | CIG | (NIR/G)-1 | Chlorophyll | Gitelson et al. (2003) |
