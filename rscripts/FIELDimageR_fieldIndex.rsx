@@ -94,7 +94,7 @@ Ind <- data.frame(
          "(2 * (Red - Green - Blue) / (Green - Blue))",
          "Green - (Red+Blue) / 2",
          "(Green-Red)/(Green+Red)",
-         "(1 / Green) - (1 / RE)",
+         "(1 / Green) - (1 / Red)",
          "(RE-Red)/(RE+Red)",
          "3 * ((RE - Red) - 0.2 * (RE - Green) * (RE/Red))",
          "(NIR - (Red - 0.1*(Red-Blue))) / (NIR + (Red - 0.1*(Red-Blue)))",
@@ -186,3 +186,4 @@ if (length(My_index) > 0) {
 
 # Write the raster to disk
 output_index <- mosaic
+
