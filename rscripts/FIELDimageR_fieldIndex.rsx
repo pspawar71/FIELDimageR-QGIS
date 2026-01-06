@@ -54,7 +54,7 @@ Ind <- data.frame(
             "GRVI", "GSAVI", "IPVI", "MSR", 
             "NDWI", "NLI", "OSAVI", "PNDVI",
             "RDVI", "REDVI", "RESR",
-            "TDVI", "VIN", "WDRVI", "WSI"),
+            "TDVI", "VIN", "WDRVI"),
   eq = c("sqrt((Red^2+Green^2+Blue^2)/3)", 
          "sqrt((Red*2+Green*2+Blue*2)/3)", 
          "(Red-Green)/(Red+Green)", 
@@ -117,8 +117,7 @@ Ind <- data.frame(
          "NIR/RE",
          "1.5 * ((NIR - Red) / (sqrt(NIR ^2 + Red + 0.5)))",
          "NIR/Red",
-         "(0.2 * NIR - Red) / (0.2 * NIR + Red)",
-         "5*(NIR - Red) / (NIR + Red) - (RE-NIR) / (RE+NIR)"
+         "(0.2 * NIR - Red) / (0.2 * NIR + Red)"
   ),
   band = c("C", "C", "C", 
            "C", "C", "C", 
@@ -186,4 +185,5 @@ if (length(My_index) > 0) {
 
 # Write the raster to disk
 output_index <- mosaic
+
 
