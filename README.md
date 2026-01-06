@@ -366,7 +366,6 @@ Attention: The plots are identified in ascending order from left to right and bo
 | Triangular vegetation index | TVI | 0.5*(120*(NIR-G)-200*(R-G)) | Green LAI, chlorophyll, canopy | Broge and Leblanc (2000) |
 | Vegetation Index Number | VIN | NIR/R | Leaf chlorophyll | Vincini et al. (2008) |
 | Vegetation Index using Red Edge | VIRE | (RE-R)/(RE+R) | Chlorophyll estimation | Gitelson & Merzlyak (1994) |
-| Water Stress Index | WSI | 5*(NIR-R)/(NIR+R)-(RE-NIR)/(RE+NIR) | Water stress | Zarco-Tejada et al. (2012) |
 | Wide Dynamic Range Vegetation Index | WDRVI | (0.2*NIR-R)/(0.2*NIR+R) | Biophysical characteristics | Gitelson (2004) |
 
 <br />
