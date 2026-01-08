@@ -332,7 +332,7 @@ Attention: The plots are identified in ascending order from left to right and bo
 
 | Description | Index | Formula | Related traits | References |
 |-------------|-------|---------|----------------|------------|
-| Anthocyanin Reflectance Index | ARI | (1/G)-(1/Red) | Anthocyanin content | Gitelson et al. (2001) |
+| Anthocyanin Reflectance Index | ARI | (1/G)-(1/RE) | Anthocyanin content | Gitelson et al. (2001) |
 | Atmospherically Resistant Vegetation Index | ARVI | (NIR-(R-0.1*(R-B)))/(NIR+(R-0.1*(R-B))) | Atmospheric resistance | Kaufman & Tanre (1992) |
 | Burned Area Index | BAI | 1/((0.1-R)^2+(0.06-NIR)^2) | Burned areas | Martín (1998) |
 | Blue-Wide Dynamic Range Vegetation Index | BWDRVI | (0.1*NIR-B)/(0.1*NIR+B) | Biophysical characteristics | Gitelson (2004) |
